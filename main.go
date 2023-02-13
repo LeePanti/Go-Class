@@ -1,33 +1,18 @@
 // Wait groups
 package main
 
+// Demonstrate flags
+
 import (
+	"flag"
 	"fmt"
-	"sync"
 )
 
-func one(wg *sync.WaitGroup) {
-	defer wg.Done()
-	fmt.Println("hola")
-}
-
-func two(wg *sync.WaitGroup) {
-	defer wg.Done()
-	fmt.Println("ni hao")
-}
-
-func three(wg *sync.WaitGroup) {
-	defer wg.Done()
-	fmt.Println("hello")
-}
-
 func main() {
+	//set flags
+	msg := flag.String("msg", "Howdy stranger!", "the message to display")
+	flag.Parse()
 
-	var wg sync.WaitGroup
-	wg.Add(4)
-
-	go one(&wg)
-	go two(&wg)
-	go three(&wg)
-	wg.Wait()
+	// check if the user set the flag
+	fmt.Println(*msg)
 }
