@@ -21,11 +21,6 @@ func three(wg *sync.WaitGroup) {
 	fmt.Println("hello")
 }
 
-func four(wg *sync.WaitGroup) {
-	defer wg.Done()
-	fmt.Println("func")
-}
-
 func main() {
 
 	var wg sync.WaitGroup
@@ -34,7 +29,5 @@ func main() {
 	go one(&wg)
 	go two(&wg)
 	go three(&wg)
-	go four(&wg)
-
 	wg.Wait()
 }
