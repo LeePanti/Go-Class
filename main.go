@@ -16,11 +16,12 @@ func main() {
 	caps := flag.Bool("caps", false, "should the string be all caps")
 	flag.Parse()
 
-	for i := 0; i < *num; i++ {
-		if *caps {
-			fmt.Println(strings.ToUpper(*msg))
-		} else {
-			fmt.Println(*msg)
-		}
+	if *caps {
+		*msg = strings.ToUpper(*msg)
 	}
+
+	for i := 0; i < *num; i++ {
+		fmt.Println(*msg)
+	}
+
 }
